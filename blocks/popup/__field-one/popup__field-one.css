@@ -9,4 +9,6 @@
     padding-bottom: 13px;
     border-bottom: rgba(0, 0, 0, 0.2);
     text-align: start;
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }

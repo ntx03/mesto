@@ -10,7 +10,7 @@
     border: #ffffff 1px solid;
 }
 
-@media (max-width:768px) {
+@media (max-width: 768px) {
     .profile_buttom_add {
         margin-top: 36px;
         margin-right: auto;
@@ -19,7 +19,7 @@
     }
 }
 
-@media (max-width:400px) {
+@media (max-width: 400px) {
     .profile_buttom_add {
         margin-top: 32px;
         width: 16px;
@@ -29,4 +29,9 @@
         padding-left: 131px;
         padding-right: 131px;
     }
+}
+
+.profile_buttom_add:hover {
+    cursor: pointer;
+    opacity: 0.6;
 }

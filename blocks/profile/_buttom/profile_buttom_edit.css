@@ -5,18 +5,23 @@
     border: #ffffff 1px solid;
 }
 
-@media (max-width:768px) {
+@media (max-width: 768px) {
     .profile_buttom_edit {
         margin-top: auto;
         margin-bottom: 18px;
     }
 }
 
-@media (max-width:400px) {
+@media (max-width: 400px) {
     .profile_buttom_edit {
         margin-bottom: 16px;
         width: 7.5px;
         height: 7.5px;
         padding: 4.25px;
     }
+}
+
+.profile_buttom_edit:hover {
+    cursor: pointer;
+    opacity: 0.6;
 }

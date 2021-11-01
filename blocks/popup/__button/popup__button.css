@@ -8,9 +8,18 @@
     font-weight: 400;
     line-height: 22px;
     font-style: normal;
-    padding-left: 125px;
-    padding-right: 125px;
     padding-top: 14px;
     padding-bottom: 18px;
     margin-top: 48px;
+}
+
+.popup__button:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+@media (max-width: 690px) {
+    .popup__button {
+        max-width: 282px;
+    }
 }

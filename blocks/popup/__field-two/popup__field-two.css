@@ -1,5 +1,5 @@
 .popup__field-two {
-    margin: 0%;
+    margin: 0;
     width: 100%;
     font-family: inter;
     font-size: 14px;
@@ -7,8 +7,8 @@
     font-style: normal;
     line-height: 17px;
     padding-bottom: 13px;
-    border: rgba(0, 0, 0, 1);
-    text-align: start;
     margin-top: 30px;
-    z-index: 2;
+    text-align: start;
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }

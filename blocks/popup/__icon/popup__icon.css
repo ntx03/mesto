@@ -5,3 +5,15 @@
     top: -38px;
     right: -38px;
 }
+.popup__icon:hover {
+    cursor: pointer;
+    opacity: 0.6;
+}
+
+@media (max-width: 690px) {
+    .popup__icon {
+        width: 20px;
+        height: 20px;
+        right: 0;
+    }
+}

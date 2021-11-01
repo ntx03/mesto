@@ -7,3 +7,11 @@
     margin-left: auto;
     margin-right: auto;
 }
+
+@media (max-width: 690px) {
+    .popup__content {
+        margin-right: 22px;
+        margin-left: 22px;
+        max-width: 282px;
+    }
+}
