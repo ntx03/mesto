@@ -5,11 +5,100 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="./pages/index.css">
+    <title>mesto</title>
 </head>
 
-<body>
+<body class="body">
+    <div class="page">
+        <header class="header">
+            <img class="header__logo" src="/images/Vector.jpg" alt="Логотип место россия">
+        </header>
 
+        <main class="content">
+            <section class="profile">
+                <img class="profile__avatar" src="images/kusto.jpg" alt="Фотография жак-Ив Кусто">
+                <div class="profile__info">
+                    <h1 class="profile__title">Жак-Ив Кусто</h1>
+                    <img class="profile_buttom_edit" src="images/paints.png" alt="Кнопка редактирования профиля">
+                    <p class="profile__subtitle">Исследователь океана</p>
+                </div>
+                <img class="profile_buttom_add" src="/images/plus.png" alt="Кнопка редактирования количества карточек">
+            </section>
+            <section class="cards">
+                <div class="card">
+                    <div class="card__image-container">
+                        <img class="card__image" src="images/dagestan_108.jpg" alt="горы дагестана летом">
+                    </div>
+                    <div class="card__title-container">
+                        <h2 class="card__title">Горы Дагестана</h2>
+                        <img class="card_heart_not-like" src="images/heart_no_like.jpg" alt="иконка с сердечком">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card__image-container">
+                        <img class="card__image" src="images/elbrus_140.jpg" alt="зимние горы эльбруса">
+                    </div>
+                    <div class="card__title-container">
+                        <h2 class="card__title">Горы Эльбруса</h2>
+                        <img class="card_heart_not-like" src="images/heart_no_like.jpg" alt="иконка с сердечком">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card__image-container">
+                        <img class="card__image" src="images/sahalin_134.jpg" alt="горы Сахалина летом, рядом с морем">
+                    </div>
+                    <div class="card__title-container">
+                        <h2 class="card__title">Сахалин</h2>
+                        <img class="card_heart_not-like" src="images/heart_no_like.jpg" alt="иконка с сердечком">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card__image-container">
+                        <img class="card__image" src="images/siberia_78.jpg"
+                            alt="деревянный дом на фоне холмов восточной сибири">
+                    </div>
+                    <div class="card__title-container">
+                        <h2 class="card__title">Восточная Сибирь</h2>
+                        <img class="card_heart_not-like" src="images/heart_no_like.jpg" alt="иконка с сердечком">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card__image-container">
+                        <img class="card__image" src="images/siberia_79.jpg"
+                            alt="малая речка весной в глухом лесу на фоне каменистого обрыва">
+                    </div>
+                    <div class="card__title-container">
+                        <h2 class="card__title">Лес Сибири</h2>
+                        <img class="card_heart_not-like" src="images/heart_no_like.jpg" alt="иконка с сердечком">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card__image-container">
+                        <img class="card__image" src="images/siberia_97.jpg" alt="Осенний лес сибири">
+                    </div>
+                    <div class="card__title-container">
+                        <h2 class="card__title">Сибирская осень в лесу</h2>
+                        <img class="card_heart_not-like" src="images/heart_no_like.jpg" alt="иконка с сердечком">
+                    </div>
+                </div>
+            </section>
+            <div class="popup">
+                <section class="popup__window">
+                    <img class="popup__icon" src="images/Close Icon.png" alt="белый крестик">
+                    <div class="popup__content">
+                        <h2 class="popup__title">Редактировать профиль</h2>
+                        <p class="popup__field-one">Жак-Ив Кусто</p>
+                        <p class="popup__field-two">Исследователь океана</p>
+                        <button class="popup__button">Сохранить</button>
+                    </div>
+                </section>
+
+            </div>
+        </main>
+        <footer class="footer">&copy; 2021. Mesto Russia</footer>
+    </div>
+    <script src="/pages/script.js"></script>
 </body>
 
 </html>
