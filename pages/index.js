@@ -12,8 +12,8 @@ function popupquit() {
 }
 popupexit.addEventListener('click', popupquit);
 
-let fieldone = document.querySelector('.popup__field-one');
-let fieldtwo = document.querySelector('.popup__field-two');
+let fieldone = document.querySelector('.popup__name-input');
+let fieldtwo = document.querySelector('.popup__job-input');
 let formElement = document.querySelector('.popup__button');
 
 function formSubmitHandler(evt) {
