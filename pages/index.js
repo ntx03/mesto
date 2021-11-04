@@ -1,4 +1,4 @@
-let buttomedit = document.querySelector('.profile__buttom_edit');
+let buttomedit = document.querySelector('.profile__buttom-edit');
 let popupopen = document.querySelector('.popup');
 function showClick() {
     popupopen.classList.add('popup_open');
