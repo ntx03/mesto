@@ -22,20 +22,17 @@ function formSubmitHandler(evt) {
     // О том, как это делать, расскажем позже.
 
     // Получите значение полей jobInput и nameInput из свойства value
-    fieldone.getAttribute('value');
-    fieldtwo.getAttribute('value');
-    console.log(fieldone.getAttribute('value'));
-    console.log(fieldtwo.getAttribute('value'));
+    const nameOne = fieldone.value;
+    const nameTwo = fieldtwo.value;
+    console.log(nameOne);
+    console.log(nameTwo);
     // Выберите элементы, куда должны быть вставлены значения полей
-    let name = document.querySelector('.profile__title');
-    let aboutme = document.querySelector('.profile__subtitle');
-    console.log(name);
+    const name = document.querySelector('.profile__title');
+    const aboutMe = document.querySelector('.profile__subtitle');
     // Вставьте новые значения с помощью textContent
-    name.textContent = name.setAttribute('value', fieldone.getAttribute('value'));
-    aboutme.textContent = aboutme.setAttribute('value', fieldtwo.getAttribute('value'));
+    name.textContent = nameOne;
+    aboutMe.textContent = nameTwo;
     popupopen.classList.remove('popup_open');
-    console.log(name.textContent);
-    console.log(aboutme.textContent);
 }
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
