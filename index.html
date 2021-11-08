@@ -12,94 +12,98 @@
 <body class="body">
     <div class="page">
         <header class="header">
-            <img class="header__logo" src="./images/Vector.jpg" alt="Логотип место россия">
+            <img class="header__logo" src="./images/vector.svg" alt="Логотип место россия">
         </header>
 
         <main class="content">
             <section class="profile">
-                <img class="profile__avatar" src="images/kusto.jpg" alt="Фотография жак-Ив Кусто">
+                <img class="profile__avatar" src="images/kusto.jpg" alt="аватар пользователя">
                 <div class="profile__info">
                     <h1 class="profile__title">Жак-Ив Кусто</h1>
-                    <img class="profile__buttom-edit" src="images/paints.png" alt="Кнопка редактирования профиля">
+                    <button class="profile__button-edit" type="button"></button>
                     <p class="profile__subtitle">Исследователь океана</p>
                 </div>
-                <img class="profile__buttom-add" src="./images/plus.png"
-                    alt="Кнопка редактирования количества карточек">
+                <button class="profile__button-add" type="button"></button>
             </section>
+
             <section class="cards">
-                <div class="card">
+                <article class="card">
                     <div class="card__image-container">
                         <img class="card__image" src="images/dagestan_108.jpg" alt="горы дагестана летом">
                     </div>
                     <div class="card__title-container">
                         <h2 class="card__title">Горы Дагестана</h2>
-                        <img class="card__heart" src="images/heart_no_like.jpg" alt="иконка с сердечком">
+                        <button class="card__heart" type="button"></button>
                     </div>
-                </div>
-                <div class="card">
+                </article>
+                <article class="card">
                     <div class="card__image-container">
                         <img class="card__image" src="images/elbrus_140.jpg" alt="зимние горы эльбруса">
                     </div>
                     <div class="card__title-container">
                         <h2 class="card__title">Горы Эльбруса</h2>
-                        <img class="card__heart" src="images/heart_no_like.jpg" alt="иконка с сердечком">
+                        <button class="card__heart" type="button"></button>
                     </div>
-                </div>
-                <div class="card">
+                </article>
+                <article class="card">
                     <div class="card__image-container">
                         <img class="card__image" src="images/sahalin_134.jpg" alt="горы Сахалина летом, рядом с морем">
                     </div>
                     <div class="card__title-container">
                         <h2 class="card__title">Сахалин</h2>
-                        <img class="card__heart" src="images/heart_no_like.jpg" alt="иконка с сердечком">
+                        <button class="card__heart" type="button"></button>
                     </div>
-                </div>
-                <div class="card">
+                </article>
+                <article class="card">
                     <div class="card__image-container">
                         <img class="card__image" src="images/siberia_78.jpg"
                             alt="деревянный дом на фоне холмов восточной сибири">
                     </div>
                     <div class="card__title-container">
                         <h2 class="card__title">Восточная Сибирь</h2>
-                        <img class="card__heart" src="images/heart_no_like.jpg" alt="иконка с сердечком">
+                        <button class="card__heart" type="button"></button>
                     </div>
-                </div>
-                <div class="card">
+                </article>
+                <article class="card">
                     <div class="card__image-container">
                         <img class="card__image" src="images/siberia_79.jpg"
                             alt="малая речка весной в глухом лесу на фоне каменистого обрыва">
                     </div>
                     <div class="card__title-container">
                         <h2 class="card__title">Лес Сибири</h2>
-                        <img class="card__heart" src="images/heart_no_like.jpg" alt="иконка с сердечком">
+                        <button class="card__heart" type="button"></button>
                     </div>
-                </div>
-                <div class="card">
+                </article>
+                <article class="card">
                     <div class="card__image-container">
                         <img class="card__image" src="images/siberia_97.jpg" alt="Осенний лес сибири">
                     </div>
                     <div class="card__title-container">
                         <h2 class="card__title">Сибирская осень в лесу</h2>
-                        <img class="card__heart" src="images/heart_no_like.jpg" alt="иконка с сердечком">
+                        <button class="card__heart" type="button"></button>
                     </div>
-                </div>
+                </article>
             </section>
             <div class="popup">
-                <section class="popup__container">
-                    <img class="popup__icon" src="./images/Close_Icon.png" alt="белый крестик">
-                    <div class="popup__content">
+                <div class="popup__container">
+                    <button class="popup__icon" type="button"></button>
+                    <form class="popup__content" name="form-element">
                         <h2 class="popup__title">Редактировать профиль</h2>
-                        <input type="text" value="Жак-Ив Кусто" class="popup__name-input">
-                        <input type="text" value="Исследователь океана" class="popup__job-input">
-                        <button class="popup__button">Сохранить</button>
-                    </div>
-                </section>
+                        <input type="text" required placeholder="Имя" value="Жак-Ив Кусто" name="Имя"
+                            class="popup__text popup_input_name">
+                        <input type="text" placeholder="О себе" value="Исследователь океана" name="О себе" required
+                            class="popup__text popup_input_job">
+                        <button class="popup__button" type="submit">Сохранить</button>
+                    </form>
+                </div>
 
             </div>
         </main>
-        <footer class="footer">&copy; 2021. Mesto Russia</footer>
+        <footer class="footer">
+            <p class="footer__text">&copy; 2021. Mesto Russia</p>
+        </footer>
     </div>
-    <script src="./pages/index.js"></script>
+    <script src="./scripts/index.js"></script>
 </body>
 
 </html>

@@ -4,10 +4,18 @@
     position: absolute;
     top: -38px;
     right: -38px;
+    background-color: rgba(0, 0, 0, 0);
+    background-image: url(../../../images/close_icon.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+    z-index: 3;
 }
+
 .popup__icon:hover {
     cursor: pointer;
     opacity: 0.6;
+    transition: 0.5s;
 }
 
 @media (max-width: 690px) {

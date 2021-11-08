@@ -2,12 +2,12 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    max-width: 338px;
+    max-width: 350px;
     align-items: center;
     margin-left: 30px;
 }
 
-@media (max-width:400px) {
+@media (max-width: 400px) {
     .profile__info {
         justify-content: center;
     }

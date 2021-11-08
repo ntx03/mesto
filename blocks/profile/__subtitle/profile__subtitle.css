@@ -2,29 +2,30 @@
     margin: 0;
     max-width: 336px;
     font-weight: 400;
-    font-family: inter;
+    font-family: inter, "Helvetica Neue", "Arial", sans-serif;
     font-size: 18px;
     line-height: 22px;
-    font-style: regular;
+    font-style: normal;
     color: #ffffff;
+    text-overflow: ellipsis;
+    max-width: 300px;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
-@media (max-width:768px) {
+@media (max-width: 768px) {
     .profile__subtitle {
         margin-left: auto;
         margin-right: auto;
     }
 }
 
-@media (max-width:768px) {
+@media (max-width: 400px) {
     .profile__subtitle {
         font-size: 14px;
         line-height: 17px;
-    }
-}
-
-@media (max-width:768px) {
-    .profile__subtitle {
         padding-right: 28px;
+        max-width: 250px;
+        margin-bottom: 2px;
     }
 }
