@@ -1,4 +1,5 @@
 .footer__text {
+    margin: 0;
     font-family: inter, 'Helvetica Neue', 'Arial', sans-serif;
     font-size: 18px;
     font-weight: 400;

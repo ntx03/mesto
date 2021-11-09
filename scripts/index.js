@@ -8,13 +8,13 @@ const popupOpen = document.querySelector('.popup');
 const popupExit = document.querySelector('.popup__icon');
 
 // выбираем класс строки попапа с именем
-const inputName = document.querySelector('.popup_input_name');
+const inputName = document.querySelector('.popup__text_input_name');
 
 // выбираем класс строки попапа с информацией о себе
-const inputJob = document.querySelector('.popup_input_job');
+const inputJob = document.querySelector('.popup__text_input_job');
 
 // выбираем класс формы попапа
-const formElement = document.querySelector('.popup__container');
+const formElement = document.querySelector('.popup__content');
 
 // выбираем класс с именем профиля на сайте
 const nameTitle = document.querySelector('.profile__title');
