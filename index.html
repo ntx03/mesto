@@ -35,6 +35,7 @@
                         <h2 class="card__title">Горы Дагестана</h2>
                         <button class="card__heart" type="button" aria-label="отметка карточки"></button>
                     </div>
+                    <button class="card__delete" type="button" aria-label="удаление карточки"></button>
                 </article>
                 <article class="card">
                     <div class="card__image-container">
@@ -44,6 +45,7 @@
                         <h2 class="card__title">Горы Эльбруса</h2>
                         <button class="card__heart" type="button" aria-label="отметка карточки"></button>
                     </div>
+                    <button class="card__delete" type="button" aria-label="удаление карточки"></button>
                 </article>
                 <article class="card">
                     <div class="card__image-container">
@@ -53,6 +55,7 @@
                         <h2 class="card__title">Сахалин</h2>
                         <button class="card__heart" type="button" aria-label="отметка карточки"></button>
                     </div>
+                    <button class="card__delete" type="button" aria-label="удаление карточки"></button>
                 </article>
                 <article class="card">
                     <div class="card__image-container">
@@ -63,6 +66,7 @@
                         <h2 class="card__title">Восточная Сибирь</h2>
                         <button class="card__heart" type="button" aria-label="отметка карточки"></button>
                     </div>
+                    <button class="card__delete" type="button" aria-label="удаление карточки"></button>
                 </article>
                 <article class="card">
                     <div class="card__image-container">
@@ -73,6 +77,7 @@
                         <h2 class="card__title">Лес Сибири</h2>
                         <button class="card__heart" type="button" aria-label="отметка карточки"></button>
                     </div>
+                    <button class="card__delete" type="button" aria-label="удаление карточки"></button>
                 </article>
                 <article class="card">
                     <div class="card__image-container">
@@ -82,9 +87,22 @@
                         <h2 class="card__title">Сибирская осень в лесу</h2>
                         <button class="card__heart" type="button" aria-label="отметка карточки"></button>
                     </div>
+                    <button class="card__delete" type="button" aria-label="удаление карточки"></button>
                 </article>
+                <template class="template">
+                    <article class="card">
+                        <div class="card__image-container">
+                            <img class="card__image" src="images/siberia_97.jpg" alt="Осенний лес сибири">
+                        </div>
+                        <div class="card__title-container">
+                            <h2 class="card__title">Сибирская осень в лесу</h2>
+                            <button class="card__heart" type="button" aria-label="отметка карточки"></button>
+                        </div>
+                        <button class="card__delete" type="button" aria-label="удаление карточки"></button>
+                    </article>
+                </template>
             </section>
-            <div class="popup">
+            <div id="editProfile" class="popup">
                 <div class="popup__container">
                     <button class="popup__icon" type="button" aria-label="закрытие"></button>
                     <form class="popup__content" name="profile_editing_form">
@@ -96,7 +114,27 @@
                         <button class="popup__button" type="submit">Сохранить</button>
                     </form>
                 </div>
+            </div>
 
+            <div id="addCard" class="popup">
+                <div class="popup__container">
+                    <button class="popup__icon popup__icon-card" type="button" aria-label="закрытие"></button>
+                    <form class="popup__content" name="profile_editing_form">
+                        <h2 class="popup__title ">Новое место</h2>
+                        <input type="text" required placeholder="Название" value="" name="title"
+                            class="popup__text popup__text_input_title">
+                        <input type="text" placeholder="Ссылка на картинку" value="" name="link_to_the_picture" required
+                            class="popup__text popup__text_input_picture">
+                        <button class="popup__button" type="submit">Сохранить</button>
+                    </form>
+                </div>
+            </div>
+            <div id="popup_image" class="popup">
+                <div class="popup__container-image">
+                    <button class="popup__icon popup__icon-image" type="button" aria-label="закрытие"></button>
+                    <img class="popup__image" src="" alt="Фото попапа">
+                    <p class="popup__title-image">Название карточки</p>
+                </div>
             </div>
         </main>
         <footer class="footer">
