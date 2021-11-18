@@ -27,7 +27,7 @@
             </section>
 
             <section class="cards">
-                <article class="card">
+                <!--<article class="card">
                     <div class="card__image-container">
                         <img class="card__image" src="images/dagestan_108.jpg" alt="горы дагестана летом">
                     </div>
@@ -88,9 +88,9 @@
                         <button class="card__heart" type="button" aria-label="отметка карточки"></button>
                     </div>
                     <button class="card__delete" type="button" aria-label="удаление карточки"></button>
-                </article>
+                </article>-->
                 <template class="template">
-                    <article class="card">
+                    <article id="template" class="card">
                         <div class="card__image-container">
                             <img class="card__image" src="images/siberia_97.jpg" alt="Осенний лес сибири">
                         </div>
@@ -119,13 +119,13 @@
             <div id="addCard" class="popup">
                 <div class="popup__container">
                     <button class="popup__icon popup__icon-card" type="button" aria-label="закрытие"></button>
-                    <form class="popup__content" name="profile_editing_form">
+                    <form class="popup__content popup__content-card" name="form_for_adding_photos">
                         <h2 class="popup__title ">Новое место</h2>
                         <input type="text" required placeholder="Название" value="" name="title"
                             class="popup__text popup__text_input_title">
                         <input type="text" placeholder="Ссылка на картинку" value="" name="link_to_the_picture" required
                             class="popup__text popup__text_input_picture">
-                        <button class="popup__button" type="submit">Сохранить</button>
+                        <button class="popup__button popup__button-card" type="submit">Сохранить</button>
                     </form>
                 </div>
             </div>
