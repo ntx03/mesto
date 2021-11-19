@@ -10,6 +10,7 @@
     max-width: 300px;
     overflow: hidden;
     white-space: nowrap;
+    grid-area: profile__subtitle;
 }
 
 @media (max-width: 768px) {

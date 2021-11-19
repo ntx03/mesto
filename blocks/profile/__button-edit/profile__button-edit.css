@@ -5,6 +5,9 @@
     background-repeat: no-repeat;
     background-position: center;
     background-color: rgba(0, 0, 0, 1);
+    grid-area: profile__button-edit;
+
+
 }
 
 @media (max-width: 768px) {
@@ -16,8 +19,9 @@
 
 @media (max-width: 400px) {
     .profile__button-edit {
-        margin-bottom: 16px;
+        margin-bottom: 15px;
         padding: 8px;
+        background-size: 7px;
     }
 }
 

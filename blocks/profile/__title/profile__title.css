@@ -12,6 +12,7 @@
     max-width: 300px;
     overflow: hidden;
     white-space: nowrap;
+    grid-area: profile__title;
 }
 
 @media (max-width: 768px) {
