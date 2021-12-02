@@ -43,3 +43,8 @@
 @import url(../blocks/popup/__content-card/popup__content-card.css);
 @import url(../blocks/popup/__icon-profile/popup__icon-profile.css);
 @import url(../blocks/popup/__content-profile/popup__content-profile.css);
+@import url(../blocks/popup/__button-error/popup__button-error.css);
+@import url(../blocks/popup/__error-message/popup__error-message.css);
+@import url(../blocks/popup/__text-error/popup__text-error.css);
+@import url(../blocks/popup/__error-message/_show/popup__error-message_show.css);
+@import url(../blocks/popup/__text-container/popup-text-container.css);

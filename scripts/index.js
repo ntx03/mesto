@@ -136,6 +136,8 @@ function popupProfileOpen() {
     openPopup(profilePopup);
     inputName.value = nameTitle.textContent;
     inputJob.value = aboutMe.textContent;
+
+
 }
 
 // Попап редактирование профиля(закрытие)
@@ -185,3 +187,4 @@ cardForm.addEventListener('submit', sumbitCardAdd);
 
 // попап с картинкой
 popupIconImageQuit.addEventListener('click', popupImageQuit);
+

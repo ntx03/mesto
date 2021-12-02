@@ -40,29 +40,43 @@
                     </article>
                 </template>
             </section>
-            <div id="editProfile" class="popup">
+            <div id="editProfile" name="editProfile" class="popup">
                 <div class="popup__container">
                     <button class="popup__icon popup__icon-profile" type="button" aria-label="закрытие"></button>
-                    <form class="popup__content popup__content-profile" name="profile_editing_form">
+                    <form id="profile_editing_form" class="popup__content popup__content-profile"
+                        name="profile_editing_form" novalidate>
                         <h2 class="popup__title">Редактировать профиль</h2>
-                        <input type="text" required placeholder="Имя" value="Жак-Ив Кусто" name="name"
-                            class="popup__text popup__text_input_name">
-                        <input type="text" placeholder="О себе" value="Исследователь океана" name="about_me" required
-                            class="popup__text popup__text_input_job">
-                        <button class="popup__button" type="submit">Сохранить</button>
+                        <div class="popup__text-container">
+                            <input id="name" type="text" required placeholder="Имя" minlength="2" maxlenght="40"
+                                required value="Жак-Ив Кусто" name="name" class="popup__text popup__text_input_name">
+                            <span id="name-error" class="popup__error-message"></span>
+                        </div>
+                        <div class="popup__text-container">
+                            <input id="about_me" type="text" placeholder="О себе" minlength="2" maxlenght="200" required
+                                value="Исследователь океана" name="about_me" required
+                                class="popup__text popup__text_input_job ">
+                            <span id="about_me-error" class="popup__error-message"></span>
+                        </div>
+                        <button id="popup__button" class="popup__button" type="submit">Сохранить</button>
                     </form>
                 </div>
             </div>
-
             <div id="addCard" class="popup">
                 <div class="popup__container">
                     <button class="popup__icon popup__icon-card" type="button" aria-label="закрытие"></button>
-                    <form class="popup__content popup__content-card" name="form_for_adding_photos">
+                    <form class="popup__content popup__content-card" name="form_for_adding_photos" novalidate>
                         <h2 class="popup__title ">Новое место</h2>
-                        <input type="text" required placeholder="Название" value="" name="title"
-                            class="popup__text popup__text_input_title">
-                        <input type="text" placeholder="Ссылка на картинку" value="" name="link_to_the_picture" required
-                            class="popup__text popup__text_input_picture">
+                        <div class="popup__text-container">
+                            <input id="title" type="text" required placeholder="Название" minlength="2" maxlenght="30"
+                                required value="" name="title" class="popup__text popup__text_input_title">
+                            <span id="title-error" class="popup__error-message"></span>
+                        </div>
+                        <div class="popup__text-container">
+                            <input id="link_to_the_picture" type="url" placeholder="Ссылка на картинку" required
+                                value="" name="link_to_the_picture" required
+                                class="popup__text popup__text_input_picture">
+                            <span id="link_to_the_picture-error" class="popup__error-message"></span>
+                        </div>
                         <button class="popup__button popup__button-card" type="submit">Сохранить</button>
                     </form>
                 </div>
@@ -79,6 +93,7 @@
             <p class="footer__text">&copy; 2021. Mesto Russia</p>
         </footer>
     </div>
+    <script src="./scripts/validate.js"></script>
     <script src="./scripts/index.js"></script>
 </body>
 
