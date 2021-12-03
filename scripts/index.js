@@ -26,8 +26,6 @@ const popupTitle = document.querySelector('.popup__title');
 const buttonAdd = document.querySelector('.profile__button-add');
 // выбираем класс с открытия попапа с добавлением карточек
 const popupOpenCard = document.querySelector('#addCard');
-// выбираем класс изображения из карточки
-//const cardImage = document.querySelectorAll('.card__image');
 // выбираем класс изображения в попапе который увиличивает изображение из карточки
 const popupImage = document.querySelector('.popup__image');
 // выбираем класс попапа с изображением
@@ -97,7 +95,6 @@ const createCard = (item) => {
         popupImageText.textContent = popupCardtext.textContent;
         popupOpenImage();
     });
-
     return cardTemplate;
 }
 // перебор массива с карточками
@@ -110,7 +107,6 @@ cards.prepend(...result);
 // функция добавления карточки из попапа
 const sumbitCardAdd = (evt) => {
     evt.preventDefault();
-
     const cardData = {
         link: inputPicture.value,
         name: inputTitle.value
@@ -124,6 +120,18 @@ const sumbitCardAdd = (evt) => {
 // общая функция открытия попапов
 function openPopup(popup) {
     popup.classList.add('popup_open');
+    const popupOverlay = document.querySelector('.popup_open');
+    // слушатель клика закрытия overlay
+    popupOverlay.addEventListener('click', function (event) {
+        const target = event.target;
+        target.classList.remove('popup_open');
+    });
+    // слушатель закрытия попапа по клавише Esc
+    document.addEventListener('keydown', function (evt) {
+        if (evt.key === 'Escape') {
+            popup.classList.remove('popup_open');
+        }
+    });
 }
 
 // общая функция закрытия попапов
@@ -136,13 +144,12 @@ function popupProfileOpen() {
     openPopup(profilePopup);
     inputName.value = nameTitle.textContent;
     inputJob.value = aboutMe.textContent;
-
-
 }
 
 // Попап редактирование профиля(закрытие)
 function popupProfileQuit() {
     closePopup(profilePopup);
+
 }
 
 // Попап редактирование профиля(внесение данных)
@@ -158,10 +165,11 @@ function popupOpenCardForm() {
     openPopup(popupOpenCard);
     inputTitle.value = '';
     inputPicture.value = '';
+
 }
 
 //попап добавление карточек(закрытие)
-function popupQuitCard() {
+function popupQuitCard(validationConfig) {
     closePopup(popupOpenCard);
 }
 
@@ -177,6 +185,7 @@ function popupImageQuit() {
 
 // попап редактирования профиля
 buttonEdit.addEventListener('click', popupProfileOpen);
+//popupOverlay.addEventListener('click', popupProfileQuit);
 popupExit.addEventListener('click', popupProfileQuit);
 formProfile.addEventListener('submit', submitProfile);
 
