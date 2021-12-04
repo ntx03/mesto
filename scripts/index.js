@@ -127,7 +127,7 @@ const sumbitCardAdd = (evt) => {
 function closePopupEsc(evt) {
     if (evt.key === 'Escape') {
         const openedPopup = document.querySelector('.popup_open')
-        openedPopup.classList.remove('popup_open');
+        closePopup(openedPopup)
     }
 }
 
@@ -151,7 +151,7 @@ function closePopupOverlay(popup) {
     // слушатель клика закрытия overlay
     popup.addEventListener('click', function (event) {
         const target = event.target;
-        target.classList.remove('popup_open');
+        closePopup(target)
     });
 }
 // навешиваем слушатель на оверлэй попапа профиля
@@ -163,12 +163,11 @@ closePopupOverlay(popupImageForm);
 
 
 // функция валидирования кнопки
-function validityButton(formElement) {
+function validateButton(formElement) {
     const buttonElement = formElement.querySelector('.popup__button');
     const inactiveButtonClass = 'popup__button-error';
     toggleButtonState(formElement, buttonElement, inactiveButtonClass);
 }
-
 
 // Попап редактирование профиля(открытие)
 function openPopupProfile() {
@@ -195,13 +194,12 @@ function submitProfile(evt) {
 //Попап добавление карточек(открытие)
 function openPopupCardForm() {
     openPopup(popupOpenCard);
-
 }
 
 //попап добавление карточек(закрытие)
 function quitPopupCard() {
     closePopup(popupOpenCard);
-    validityButton(formElementCard);
+    validateButton(formElementCard);
 }
 
 // открытие попапа с изображением из карточек

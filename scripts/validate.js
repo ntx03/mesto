@@ -1,4 +1,3 @@
-
 // массив с классами попапов с данными
 const validationConfig = {
     formSelector: '.popup__content',
