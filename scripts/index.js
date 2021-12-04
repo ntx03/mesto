@@ -43,6 +43,9 @@ const cards = document.querySelector('.cards');
 // класс с формой попапа карточек
 const cardForm = document.querySelector('.popup__content-card');
 
+// форма редактирования карточек
+const formElementCard = document.querySelector('#form_for_adding_photos');
+
 // массив с данными добавляемых карточек
 const initialCards = [
     {
@@ -75,25 +78,28 @@ const initialCards = [
 const createCard = (item) => {
     const cardTemplate = template.content.querySelector('.card').cloneNode(true);
     cardTemplate.querySelector('.card__title').textContent = item.name;
-    cardTemplate.querySelector('.card__image').src = item.link;
-    cardTemplate.querySelector('.card__image').alt = item.name;
-    const cardDelete = cardTemplate.querySelector('.card__delete');
     const cardImage = cardTemplate.querySelector('.card__image');
+    cardImage.src = item.link;
+    cardImage.alt = item.name;
+    const cardDelete = cardTemplate.querySelector('.card__delete');
     const cardNoLike = cardTemplate.querySelector('.card__heart');
     const popupCardtext = cardTemplate.querySelector('.card__title');
+    // удаление карточки
     cardDelete.addEventListener('click', () => {
         cardTemplate.remove();
     })
+    // функция отметки карточки лайками
     cardNoLike.addEventListener('click', function (event) {
         const target = event.target;
         target.classList.toggle('card__heart_like');
     });
-
+    // открытие попапа с фотографией по клику карточки
     cardImage.addEventListener('click', function (event) {
         const target = event.target;
         popupImage.src = target.src;
+        popupImage.alt = popupCardtext.textContent;
         popupImageText.textContent = popupCardtext.textContent;
-        popupOpenImage();
+        openPopupImage();
     });
     return cardTemplate;
 }
@@ -113,43 +119,69 @@ const sumbitCardAdd = (evt) => {
     };
     const newCard = createCard(cardData);
     cards.prepend(newCard);
-    inputTitle.value.value = "";
-    popupQuitCard()
+    inputTitle.value = '';
+    inputPicture.value = '';
+    quitPopupCard()
+}
+
+function closePopupEsc(evt) {
+    if (evt.key === 'Escape') {
+        const openedPopup = document.querySelector('.popup_open')
+        openedPopup.classList.remove('popup_open');
+    }
 }
 
 // общая функция открытия попапов
 function openPopup(popup) {
     popup.classList.add('popup_open');
-    const popupOverlay = document.querySelector('.popup_open');
-    // слушатель клика закрытия overlay
-    popupOverlay.addEventListener('click', function (event) {
-        const target = event.target;
-        target.classList.remove('popup_open');
-    });
-    // слушатель закрытия попапа по клавише Esc
-    document.addEventListener('keydown', function (evt) {
-        if (evt.key === 'Escape') {
-            popup.classList.remove('popup_open');
-        }
-    });
+    // навешиваем слушатель закрытия попапа по клавише Esc
+    document.addEventListener('keydown', closePopupEsc);
+
 }
 
 // общая функция закрытия попапов
 function closePopup(popup) {
     popup.classList.remove('popup_open');
+    // снимаем слушатель закрытия попапа по клавише Esc
+    document.removeEventListener('keydown', closePopupEsc);
 }
 
+// функция навешиваня слушателя на попап
+function closePopupOverlay(popup) {
+    // слушатель клика закрытия overlay
+    popup.addEventListener('click', function (event) {
+        const target = event.target;
+        target.classList.remove('popup_open');
+    });
+}
+// навешиваем слушатель на оверлэй попапа профиля
+closePopupOverlay(profilePopup);
+// навешиваем слушатель на оверлэй попапа добавления карточек
+closePopupOverlay(popupOpenCard);
+//навешиваем слушатель на оверлэй попапа  фотографии карточек
+closePopupOverlay(popupImageForm);
+
+
+// функция валидирования кнопки
+function validityButton(formElement) {
+    const buttonElement = formElement.querySelector('.popup__button');
+    const inactiveButtonClass = 'popup__button-error';
+    toggleButtonState(formElement, buttonElement, inactiveButtonClass);
+}
+
+
 // Попап редактирование профиля(открытие)
-function popupProfileOpen() {
+function openPopupProfile() {
     openPopup(profilePopup);
     inputName.value = nameTitle.textContent;
     inputJob.value = aboutMe.textContent;
+    // const { formSelector, inputSelector, submitButtonSelector, inputErrorClass } = validationConfig;
+
 }
 
 // Попап редактирование профиля(закрытие)
-function popupProfileQuit() {
+function quitPopupProfile() {
     closePopup(profilePopup);
-
 }
 
 // Попап редактирование профиля(внесение данных)
@@ -157,43 +189,41 @@ function submitProfile(evt) {
     evt.preventDefault();
     nameTitle.textContent = inputName.value;
     aboutMe.textContent = inputJob.value;
-    popupProfileQuit();
+    quitPopupProfile();
 }
 
 //Попап добавление карточек(открытие)
-function popupOpenCardForm() {
+function openPopupCardForm() {
     openPopup(popupOpenCard);
-    inputTitle.value = '';
-    inputPicture.value = '';
 
 }
 
 //попап добавление карточек(закрытие)
-function popupQuitCard(validationConfig) {
+function quitPopupCard() {
     closePopup(popupOpenCard);
+    validityButton(formElementCard);
 }
 
 // открытие попапа с изображением из карточек
-function popupOpenImage() {
+function openPopupImage() {
     openPopup(popupImageForm);
 }
 
 // закрытие попапа с изображением из карточек
-function popupImageQuit() {
+function quitPopupImage() {
     closePopup(popupImageForm);
 }
 
 // попап редактирования профиля
-buttonEdit.addEventListener('click', popupProfileOpen);
-//popupOverlay.addEventListener('click', popupProfileQuit);
-popupExit.addEventListener('click', popupProfileQuit);
+buttonEdit.addEventListener('click', openPopupProfile);
+popupExit.addEventListener('click', quitPopupProfile);
 formProfile.addEventListener('submit', submitProfile);
 
 // попап редактирования карточек
-popupExitCard.addEventListener('click', popupQuitCard);
-buttonAdd.addEventListener('click', popupOpenCardForm);
+popupExitCard.addEventListener('click', quitPopupCard);
+buttonAdd.addEventListener('click', openPopupCardForm);
 cardForm.addEventListener('submit', sumbitCardAdd);
 
 // попап с картинкой
-popupIconImageQuit.addEventListener('click', popupImageQuit);
+popupIconImageQuit.addEventListener('click', quitPopupImage);
 
