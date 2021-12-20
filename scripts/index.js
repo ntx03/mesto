@@ -20,8 +20,6 @@ const formProfile = document.querySelector('.popup__content-profile');
 const nameTitle = document.querySelector('.profile__title');
 // выбираем класс с информацией о себе на сайте
 const aboutMe = document.querySelector('.profile__subtitle');
-// выбираем класс с заголовком popupа (попап с профилем)
-const popupTitle = document.querySelector('.popup__title');
 // выбираем класс с кнопкой добавления карточек 
 const buttonAdd = document.querySelector('.profile__button-add');
 // выбираем класс с открытия попапа с добавлением карточек
@@ -32,6 +30,8 @@ const popupImage = document.querySelector('.popup__image');
 const popupImageForm = document.querySelector('#popup_image');
 // Выбираем класс закрытия попапа (крестик) в изображении
 const popupIconImageQuit = document.querySelector('.popup__icon-image');
+// Выбираем класс с попапа изображениями с текстом
+const popupImageText = document.querySelector('.popup__title-image');
 // Находим форму редактирования профиля
 const formProfileEditing = document.querySelector('#profile_editing_form');
 // класс контейнера  для карточек
@@ -41,7 +41,7 @@ const cardForm = document.querySelector('.popup__content-card');
 // Находим форму редактирования карточек
 const formElementCard = document.querySelector('#form_for_adding_photos');
 
-import { Card } from "../scripts/card.js";
+import { Card } from "./Card.js";
 import { FormValidator } from "./FormValidator.js";
 
 // массив с данными добавляемых карточек
@@ -88,7 +88,7 @@ formValidatorCard.enableValidation();
 
 // Функция добавления карточек
 const createCard = (items) => {
-    const card = new Card(items, '.template', openPopupImage);
+    const card = new Card(items, '.template', openPopupImage, popupImage, popupImageText);
     const cardElement = card.createCard(items);
     return cardElement;
 };
@@ -139,31 +139,27 @@ function closePopup(popup) {
 // функция навешиваня слушателя на попап
 function closePopupOverlay(popup) {
     // слушатель клика закрытия overlay
-    popup.addEventListener('click', function (event) {
-        const target = event.target;
-        closePopup(target)
+    popup.addEventListener('click', function () {
+        const openedPopup = document.querySelector('.popup_open')
+        closePopup(openedPopup)
     });
 }
-// навешиваем слушатель на оверлэй попапа профиля
-closePopupOverlay(profilePopup);
-// навешиваем слушатель на оверлэй попапа добавления карточек
-closePopupOverlay(popupOpenCard);
+// находим оверлэй и навешиваем слушатель на оверлэй попапа профиля
+const overlayProfile = document.querySelector('#overlay_profile');
+closePopupOverlay(overlayProfile);
+// находим оверлэй и навешиваем слушатель на оверлэй попапа добавления карточек
+const overlayCard = document.querySelector('#overlay_card');
+closePopupOverlay(overlayCard);
 //навешиваем слушатель на оверлэй попапа  фотографии карточек
-closePopupOverlay(popupImageForm);
+const overlayImage = document.querySelector('#overlay_image');
+closePopupOverlay(overlayImage);
 
-
-// функция валидирования кнопки
-function validateButton(formElement) {
-    const buttonElement = formElement.querySelector('.popup__button');
-    formValidatorCard.toggleButtonState(buttonElement);
-}
 
 // Попап редактирование профиля(открытие)
 function openPopupProfile() {
     openPopup(profilePopup);
     inputName.value = nameTitle.textContent;
     inputJob.value = aboutMe.textContent;
-    // const { formSelector, inputSelector, submitButtonSelector, inputErrorClass } = validationConfig;
 }
 
 // Попап редактирование профиля(закрытие)
@@ -187,7 +183,7 @@ function openPopupCardForm() {
 //попап добавление карточек(закрытие)
 function quitPopupCard() {
     closePopup(popupOpenCard);
-    validateButton(formElementCard);
+    formValidatorCard.toggleButtonState();
 }
 
 // открытие попапа с изображением из карточек

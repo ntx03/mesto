@@ -48,3 +48,4 @@
 @import url(../blocks/popup/__text-error/popup__text-error.css);
 @import url(../blocks/popup/__error-message/_show/popup__error-message_show.css);
 @import url(../blocks/popup/__text-container/popup-text-container.css);
+@import url(../blocks/popup/__overlay/popup__overlay.css);

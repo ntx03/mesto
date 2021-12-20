@@ -12,14 +12,3 @@
     left: 0;
     right: 0;
 }
-
-.popup:hover::before {
-    cursor: pointer;
-    z-index: -1;
-    content: "";
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-}
