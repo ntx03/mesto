@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./pages/index.css">
+    <title>mesto</title>
+</head>
+
+<body class="body">
+    <div class="page">
+        <header class="header">
+            <img class="header__logo" src="images/Vector.svg" alt="Логотип место россия">
+        </header>
+
+        <main class="content">
+            <section class="profile">
+                <img class="profile__avatar" src="images/kusto.jpg" alt="аватар пользователя">
+                <div class="profile__info">
+                    <h1 class="profile__title">Жак-Ив Кусто</h1>
+                    <button class="profile__button-edit" type="button" aria-label="редактирование профиля"></button>
+                    <p class="profile__subtitle">Исследователь океана</p>
+                </div>
+                <button class="profile__button-add" type="button" aria-label="добавление карточек"></button>
+            </section>
+
+            <section class="cards">
+                <template class="template">
+                    <article id="template" class="card">
+                        <div class="card__image-container">
+                            <img class="card__image" src="images/siberia_97.jpg" alt="Осенний лес сибири">
+                        </div>
+                        <div class="card__title-container">
+                            <h2 class="card__title">Сибирская осень в лесу</h2>
+                            <button class="card__heart" type="button" aria-label="отметка карточки"></button>
+                        </div>
+                        <button class="card__delete" type="button" aria-label="удаление карточки"></button>
+                    </article>
+                </template>
+            </section>
+            <div id="editProfile" name="editProfile" class="popup">
+                <div class="popup__container">
+                    <button class="popup__icon popup__icon-profile" type="button" aria-label="закрытие"></button>
+                    <form id="profile_editing_form" class="popup__content popup__content-profile"
+                        name="profile_editing_form" novalidate>
+                        <h2 class="popup__title">Редактировать профиль</h2>
+                        <div class="popup__text-container">
+                            <input id="name" type="text" required placeholder="Имя" minlength="2" maxlenght="40"
+                                value="Жак-Ив Кусто" name="name" class="popup__text popup__text_input_name">
+                            <span id="name-error" class="popup__error-message"></span>
+                        </div>
+                        <div class="popup__text-container">
+                            <input id="about_me" type="text" placeholder="О себе" minlength="2" maxlenght="200" required
+                                value="Исследователь океана" name="about_me" class="popup__text popup__text_input_job ">
+                            <span id="about_me-error" class="popup__error-message"></span>
+                        </div>
+                        <button id="popup__button" class="popup__button" type="submit">Сохранить</button>
+                    </form>
+                </div>
+                <div id="overlay_profile" class="popup__overlay"></div>
+            </div>
+            <div id="addCard" class="popup">
+                <div class="popup__container">
+                    <button class="popup__icon popup__icon-card" type="button" aria-label="закрытие"></button>
+                    <form id="form_for_adding_photos" class="popup__content popup__content-card"
+                        name="form_for_adding_photos" novalidate>
+                        <h2 class="popup__title ">Новое место</h2>
+                        <div class="popup__text-container">
+                            <input id="title" type="text" required placeholder="Название" minlength="2" maxlenght="30"
+                                value="" name="title" class="popup__text popup__text_input_title">
+                            <span id="title-error" class="popup__error-message"></span>
+                        </div>
+                        <div class="popup__text-container">
+                            <input id="link_to_the_picture" type="url" placeholder="Ссылка на картинку" required
+                                value="" name="link_to_the_picture" class="popup__text popup__text_input_picture">
+                            <span id="link_to_the_picture-error" class="popup__error-message"></span>
+                        </div>
+                        <button class="popup__button popup__button-card" type="submit">Сохранить</button>
+                    </form>
+                </div>
+                <div id="overlay_card" class="popup__overlay"></div>
+            </div>
+            <div id="popup_image" class="popup">
+                <div class="popup__container-image">
+                    <button class="popup__icon popup__icon-image" type="button" aria-label="закрытие"></button>
+                    <img class="popup__image" src="#" alt="Фото попапа">
+                    <p class="popup__title-image">Название карточки</p>
+                </div>
+                <div id="overlay_image" class="popup__overlay"></div>
+            </div>
+        </main>
+        <footer class="footer">
+            <p class="footer__text">&copy; 2021. Mesto Russia</p>
+        </footer>
+        <script type="module" src="./scripts/components/PopupWithImage.js"></script>
+        <script type="module" src="./scripts/components/PopupWithForm.js">  </script>
+        <script type="module" src="./scripts/components/UserInfo.js"></script>
+        <script type="module" src="./scripts/components/Popup.js"></script>
+        <script type="module" src="./scripts/components/Card.js"></script>
+        <script type="module" src="./scripts/components/FormValidator.js"></script>
+        <script type="module" src="./scripts/components/Section.js"></script>
+        <script type="module" src="./pages/index.js"></script>
+    </div>
+
+</body>
+
+</html>
