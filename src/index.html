@@ -5,19 +5,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./pages/index.css">
     <title>mesto</title>
 </head>
 
 <body class="body">
     <div class="page">
         <header class="header">
-            <img class="header__logo" src="images/Vector.svg" alt="Логотип место россия">
+            <img class="header__logo" src="<%=require('./images/Vector.svg')%>" alt="Логотип место россия">
         </header>
 
         <main class="content">
             <section class="profile">
-                <img class="profile__avatar" src="images/kusto.jpg" alt="аватар пользователя">
+                <img class="profile__avatar" src="<%=require('./images/kusto.jpg')%>" alt="аватар пользователя">
                 <div class="profile__info">
                     <h1 class="profile__title">Жак-Ив Кусто</h1>
                     <button class="profile__button-edit" type="button" aria-label="редактирование профиля"></button>
@@ -94,14 +93,7 @@
         <footer class="footer">
             <p class="footer__text">&copy; 2021. Mesto Russia</p>
         </footer>
-        <script type="module" src="./scripts/components/PopupWithImage.js"></script>
-        <script type="module" src="./scripts/components/PopupWithForm.js">  </script>
-        <script type="module" src="./scripts/components/UserInfo.js"></script>
-        <script type="module" src="./scripts/components/Popup.js"></script>
-        <script type="module" src="./scripts/components/Card.js"></script>
-        <script type="module" src="./scripts/components/FormValidator.js"></script>
-        <script type="module" src="./scripts/components/Section.js"></script>
-        <script type="module" src="./pages/index.js"></script>
+
     </div>
 
 </body>

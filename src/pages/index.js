@@ -22,6 +22,7 @@ import {
     initialCards,
     validationConfig,
 } from "../scripts/utils/constants.js";
+import "../pages/index.css"
 
 // валидируем попап редактирования профиля
 const formValidatorProfile = new FormValidator(formProfileEditing, validationConfig);
