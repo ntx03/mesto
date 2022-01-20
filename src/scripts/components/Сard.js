@@ -1,5 +1,5 @@
 export class Card {
-    constructor(items, template, { handleCardClick }, popupImage, popupImageText) {
+    constructor(items, template, { handleCardClick }) {
         this._items = items;
         this._template = template;
         this._element = this._getTemplate();
@@ -7,9 +7,6 @@ export class Card {
         this._cardDelete = this._element.querySelector('.card__delete');
         this._cardImage = this._element.querySelector('.card__image');
         this._handleCardClick = handleCardClick;
-        this._popupImage = popupImage;
-        this._popupImageForm = document.querySelector('#popup_image');
-        this._popupImageText = popupImageText;
     }
 
     //  создание карточки

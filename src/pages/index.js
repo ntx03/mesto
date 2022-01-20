@@ -1,4 +1,4 @@
-import { Card } from "../scripts/components/Card.js";
+import { Card } from "../scripts/components/Сard.js";
 import { FormValidator } from "../scripts/components/FormValidator.js";
 import Section from "../scripts/components/Section.js";
 import PopupWithForm from "../scripts/components/PopupWithForm.js";
@@ -6,16 +6,11 @@ import PopupWithImage from "../scripts/components/PopupWithImage.js";
 import UserInfo from "../scripts/components/UserInfo.js";
 import {
     buttonEdit,
-    profilePopup,
     inputName,
     inputJob,
     nameTitle,
     aboutMe,
     buttonAdd,
-    popupOpenCard,
-    popupImage,
-    popupImageForm,
-    popupImageText,
     formProfileEditing,
     cards,
     formElementCard,
@@ -35,8 +30,7 @@ formValidatorCard.enableValidation();
 // Функция добавления карточек
 const createCard = (items) => {
     const card = new Card(items, '.template',
-        { handleCardClick },
-        popupImage, popupImageText);
+        { handleCardClick });
     const cardElement = card.createCard(items);
     return cardElement;
 };
@@ -47,7 +41,7 @@ function handleCardClick(items) {
 }
 
 // попап изображения 
-const popupWithImage = new PopupWithImage(popupImageForm);
+const popupWithImage = new PopupWithImage('#popup_image');
 popupWithImage.setEventListeners();
 
 // Генерация карточек
@@ -62,7 +56,7 @@ const section = new Section(
 section.renderItems(initialCards);
 
 // создаем класс попапа добавления карточек 
-const popupAddCard = new PopupWithForm(popupOpenCard, {
+const popupAddCard = new PopupWithForm('#addCard', {
     formSubmitCallBack:
         (items) => {
             const cardData = {
@@ -80,7 +74,7 @@ popupAddCard.setEventListeners();
 const userInfo = new UserInfo({ nameTitle, aboutMe });
 
 // попап редактирования иинформации о себе
-const popupProfileEdit = new PopupWithForm(profilePopup, {
+const popupProfileEdit = new PopupWithForm('#editProfile', {
     formSubmitCallBack: (items) => {
         userInfo.setUserInfo(items);
     },
@@ -91,7 +85,7 @@ popupProfileEdit.setEventListeners();
 // слушаем кнопку попапа редактирования профиля
 buttonEdit.addEventListener('click', () => {
     inputName.value = userInfo.getUserInfo().name;
-    inputJob.value = userInfo.getUserInfo().about_me;
+    inputJob.value = userInfo.getUserInfo().aboutMe;
     popupProfileEdit.open();
 });
 

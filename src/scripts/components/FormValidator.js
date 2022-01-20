@@ -19,10 +19,10 @@ export class FormValidator {
         this._popupForm.addEventListener('submit', (evt) => {
             evt.preventDefault();
         });
-        this.toggleButtonState(this._buttonElement)
+        this.toggleButtonState()
         this._inputList.forEach((inputElement) => {
             inputElement.addEventListener('input', () => {
-                this.toggleButtonState(this._buttonElement);
+                this.toggleButtonState();
                 this._checkInputValidity(inputElement);
             })
         })
