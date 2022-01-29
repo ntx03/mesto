@@ -42,11 +42,13 @@ export class FormValidator {
         errorElement.textContent = '';
     }
     _showInputError(inputElement) {
+
         this._inputElement = inputElement;
         const errorElement = this._popupForm.querySelector(`#${this._inputElement.id}-error`);
         this._inputElement.classList.add(this._errorClass);
         errorElement.classList.add(this._inputErrorClass);
         errorElement.textContent = this._inputElement.validationMessage;
+
     }
     // метод валидирующий кнопку
     toggleButtonState() {

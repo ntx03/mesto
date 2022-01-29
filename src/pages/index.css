@@ -49,3 +49,14 @@
 @import url(../blocks/popup/__error-message/_show/popup__error-message_show.css);
 @import url(../blocks/popup/__text-container/popup-text-container.css);
 @import url(../blocks/popup/__overlay/popup__overlay.css);
+@import url(../blocks/popup/__title-deletion/popup__title-deletion.css);
+@import url(../blocks/popup/__content-deletion/popup__content-deletion.css);
+@import url(../blocks/popup/__container-deletion/popup__container-deletion.css);
+@import url(../blocks/popup/__button-deletion/popup__button-deletion.css);
+@import url(../blocks/popup/__container-avatar/popup__container-avatar.css);
+@import url(../blocks/popup/__title-avatar/popup__title-avatar.css);
+@import url(../blocks/card/__heard-container/card__heard-container.css);
+@import url(../blocks/card/__heard-number/card__heard-number.css);
+@import url(../blocks/profile/__avatar-button/profile__avatar-button.css);
+@import url(../blocks/profile/__avatar-container/profile-avatar-container.css);
+@import url(../blocks/card/__delete/_visible/card__delete_visible.css);

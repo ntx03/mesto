@@ -16,7 +16,10 @@
 
         <main class="content">
             <section class="profile">
-                <img class="profile__avatar" src="<%=require('./images/kusto.jpg')%>" alt="аватар пользователя">
+                <div class="profile__avatar-container">
+                    <img class="profile__avatar" src="<%=require('./images/kusto.jpg')%>" alt="аватар пользователя">
+                    <button title="Загрузить новый аватар" class="profile__avatar-button"></button>
+                </div>
                 <div class="profile__info">
                     <h1 class="profile__title">Жак-Ив Кусто</h1>
                     <button class="profile__button-edit" type="button" aria-label="редактирование профиля"></button>
@@ -33,12 +36,17 @@
                         </div>
                         <div class="card__title-container">
                             <h2 class="card__title">Сибирская осень в лесу</h2>
-                            <button class="card__heart" type="button" aria-label="отметка карточки"></button>
+                            <div class="card__heard-container">
+                                <button class="card__heart" type="button" aria-label="отметка карточки"></button>
+                                <p class="card__heard-number">0</p>
+                            </div>
                         </div>
-                        <button class="card__delete" type="button" aria-label="удаление карточки"></button>
+                        <button class="card__delete card__delete_visible" type="button"
+                            aria-label="удаление карточки"></button>
                     </article>
                 </template>
             </section>
+
             <div id="editProfile" name="editProfile" class="popup">
                 <div class="popup__container">
                     <button class="popup__icon popup__icon-profile" type="button" aria-label="закрытие"></button>
@@ -76,7 +84,7 @@
                                 value="" name="link_to_the_picture" class="popup__text popup__text_input_picture">
                             <span id="link_to_the_picture-error" class="popup__error-message"></span>
                         </div>
-                        <button class="popup__button popup__button-card" type="submit">Сохранить</button>
+                        <button class="popup__button popup__button-card" type="submit">Создать</button>
                     </form>
                 </div>
                 <div id="overlay_card" class="popup__overlay"></div>
@@ -88,6 +96,34 @@
                     <p class="popup__title-image">Название карточки</p>
                 </div>
                 <div id="overlay_image" class="popup__overlay"></div>
+            </div>
+            <div id="confirmDeletionCard" class="popup">
+                <div class="popup__container popup__container-deletion">
+                    <button class="popup__icon popup__icon-deletion" type="button" aria-label="закрытие"></button>
+                    <form id="confirmDeletionForm" class="popup__content popup__content-deletion"
+                        name="confirmDeletionForm" novalidate>
+                        <h2 class="popup__title popup__title-deletion">Вы уверены?</h2>
+                        <button id="popup__button_confirm" class="popup__button popup__button-deletion"
+                            type="submit">Да</button>
+                    </form>
+                </div>
+                <div id="overlay_deletion" class="popup__overlay"></div>
+            </div>
+            <div id="addAvatar" class="popup">
+                <div class="popup__container popup__container-avatar">
+                    <button class="popup__icon popup__icon-avatar" type="button" aria-label="закрытие"></button>
+                    <form id="form_for_adding_avatar" class="popup__content popup__content-avatar"
+                        name="form_for_adding_pavatar" novalidate>
+                        <h2 class="popup__title popup__title-avatar">Обновить аватар</h2>
+                        <div class="popup__text-container">
+                            <input id="link_to_the_avatar" type="url" required placeholder="ссылка на аватар" value=""
+                                name="avatar" class="popup__text popup__text_input_picture">
+                            <span id="link_to_the_avatar-error" class="popup__error-message"></span>
+                        </div>
+                        <button id="popup_button_avatar" class="popup__button" type="submit">Сохранить</button>
+                    </form>
+                </div>
+                <div id="overlay_avatar" class="popup__overlay"></div>
             </div>
         </main>
         <footer class="footer">

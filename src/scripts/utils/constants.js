@@ -16,7 +16,16 @@ export const formProfileEditing = document.querySelector('#profile_editing_form'
 export const cards = document.querySelector('.cards');
 // Находим форму редактирования карточек
 export const formElementCard = document.querySelector('#form_for_adding_photos');
-
+// находим форму замены аватара
+export const formElementAvatar = document.querySelector('#form_for_adding_avatar');
+// Находим кнопку смены аватара
+export const buttonAvatar = document.querySelector('.profile__avatar-button');
+// кнопка сохранить попапа с профилем 
+export const buttonProfilePopup = document.querySelector('#popup__button');
+// кнопка сохранить попапа с карточками
+export const buttonCardPopup = document.querySelector('.popup__button-card');
+// кнопка сохранить попапа с аватаром
+export const buttonAvatarPopup = document.querySelector('#popup_button_avatar');
 // массив с данными добавляемых карточек
 export const initialCards = [
     {
