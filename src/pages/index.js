@@ -21,7 +21,8 @@ import {
     validationConfig,
     buttonProfilePopup,
     buttonCardPopup,
-    buttonAvatarPopup
+    buttonAvatarPopup,
+    avatar
 } from "../scripts/utils/constants.js";
 import "../pages/index.css"
 
@@ -41,21 +42,25 @@ const createCard = (items) => {
         { handleCardClick }, {
         deleteCard:
             (items, element) => {
-                popupConfirmDeletion.open();
-                popupConfirmDeletion.setEventListeners(items, element);
+                popupConfirmDeletion.open(items, element);
+                popupConfirmDeletion.setEventListeners();
             }
     }, {
         addLike:
             (items) => {
-                return api.addLike(items)
+                api.addLike(items)
+                    .then(data => card.setLike(data))
+                    .catch((err) => console.log(err));
 
             }
     }, {
         deleteLike: (items) => {
-            return api.deleteLike(items)
+            api.deleteLike(items)
+                .then(data => card.removeLike(data))
+                .catch((err) => console.log(err));
 
         }
-    });
+    }, "5045c66c125b0882833b30e3");
     const cardElement = card.createCard(items);
     return cardElement;
 };
@@ -93,15 +98,6 @@ const section = new Section(
     cards
 );
 const api = new Api('https://mesto.nomoreparties.co/v1/cohort-34/', '5f5add00-d466-4f85-8d24-2991878e59c1');
-api
-    .getItemsGard()
-    .then((result) => {
-        section.renderItems(result.reverse());
-        console.log(result.reverse());
-    })
-    .catch((err) => {
-        console.log(err); // выведем ошибку в консоль
-    });
 
 // создаем класс попапа добавления карточек 
 const popupAddCard = new PopupWithForm('#addCard', {
@@ -116,8 +112,10 @@ const popupAddCard = new PopupWithForm('#addCard', {
             api
                 .addCard(cardData)
                 .then((res) => {
+                    popupAddCard.close();
                     const newCard = createCard(res);
                     cards.prepend(newCard);
+
                 })
                 .catch((err) => console.log(err))
                 .finally(deleteLoadCard(buttonCardPopup))
@@ -127,7 +125,7 @@ const popupAddCard = new PopupWithForm('#addCard', {
 popupAddCard.setEventListeners();
 
 // отображаем информацию о пользователе на странице
-const userInfo = new UserInfo({ nameTitle, aboutMe });
+const userInfo = new UserInfo({ nameTitle, aboutMe, avatar });
 
 // попап редактирования иинформации о себе
 const popupProfileEdit = new PopupWithForm('#editProfile', {
@@ -137,6 +135,7 @@ const popupProfileEdit = new PopupWithForm('#editProfile', {
             .editProfile(items)
             .then((res) => {
                 userInfo.setUserInfo(res);
+                popupProfileEdit.close();
             })
             .catch((err) => console.log(err))
             .finally(deleteLoad(buttonProfilePopup))
@@ -152,6 +151,7 @@ const popupConfirmDeletion = new PopupConfirmDeletion('#confirmDeletionCard', {
             .deleteCard(items)
             .then(() => {
                 element.remove();
+                popupConfirmDeletion.close();
             })
             .catch((err) => console.log(err))
 
@@ -165,6 +165,7 @@ const popupReplaseAvatar = new PopupWithForm('#addAvatar', {
         api.replaseAvatar(items)
             .then((res) => {
                 userInfo.setUserInfo(res);
+                popupReplaseAvatar.close();
             })
             .catch((err) => console.log(err))
             .finally(deleteLoad(buttonAvatarPopup))
@@ -174,8 +175,9 @@ popupReplaseAvatar.setEventListeners();
 
 // слушаем кнопку попапа редактирования профиля
 buttonEdit.addEventListener('click', () => {
-    inputName.value = userInfo.getUserInfo().name;
-    inputJob.value = userInfo.getUserInfo().aboutMe;
+    const userData = userInfo.getUserInfo();
+    inputName.value = userData.name;
+    inputJob.value = userData.aboutMe;
     popupProfileEdit.open();
 });
 
@@ -189,10 +191,11 @@ buttonAvatar.addEventListener('click', () => {
     popupReplaseAvatar.open();
     formValidatorAvatar.toggleButtonState();
 });
-// запрашиваю данные о пользователе от сервера
-api
-    .getUserInfo()
-    .then((res) => {
-        userInfo.setUserInfo(res);
+
+// запрашиваю данные о пользователе и карточки  от сервера
+Promise.all([api.getUserInfo(), api.getItemsGard()])
+    .then(([userData, cards]) => {
+        userInfo.setUserInfo(userData);
+        section.renderItems(cards.reverse());
     })
-    .catch((err) => console.log(err))
+    .catch((err) => console.log(err));

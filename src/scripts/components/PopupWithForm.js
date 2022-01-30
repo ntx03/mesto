@@ -14,8 +14,6 @@ export default class PopupWithForm extends Popup {
     //* Сабмит формы
     _formSubmit() {
         this._formSubmitCallBack(this._getInputValues());
-        this.close();
-
     }
 
     // слушатель событий

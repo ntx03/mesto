@@ -26,6 +26,8 @@ export const buttonProfilePopup = document.querySelector('#popup__button');
 export const buttonCardPopup = document.querySelector('.popup__button-card');
 // кнопка сохранить попапа с аватаром
 export const buttonAvatarPopup = document.querySelector('#popup_button_avatar');
+// находим класс аватара
+export const avatar = document.querySelector('.profile__avatar');
 // массив с данными добавляемых карточек
 export const initialCards = [
     {

@@ -10,18 +10,22 @@ export default class PopupConfirmDeletion extends Popup {
     }
 
     // Сабмит формы
-    _formSubmit(items, element) {
-        this._deleteCard(items, element);
-        this.close();
+    _formSubmit(evt) {
+        evt.preventDefault();
+        this._deleteCard(this._items, this._element);
+        this._form.removeEventListener('submit', this._formSubmit);
     }
 
     // слушатель событий
-    setEventListeners(items, element) {
+    setEventListeners() {
         super.setEventListeners();
-        this._form.addEventListener('submit', (evt) => {
-            evt.preventDefault();
-            this._formSubmit(items, element);
-        });
+        this._form.addEventListener('submit', this._formSubmit);
+    }
+
+    open(items, element) {
+        this._items = items;
+        this._element = element;
+        super.open();
     }
 
 }

@@ -13,7 +13,7 @@ export default class Api {
             );
         }
     }
-
+    // запрашиваем карточки от сервера
     getItemsGard() {
         return fetch(`${this._url}cards`, {
             headers: {
@@ -22,7 +22,7 @@ export default class Api {
         })
             .then((res) => this._requestResult(res));
     }
-
+    // запрашиваем данные о пользователе от сервера
     getUserInfo() {
         return fetch(`${this._url}users/me `, {
             headers: {
@@ -31,7 +31,7 @@ export default class Api {
         })
             .then((res) => this._requestResult(res));
     }
-
+    // отправляем данные  профиля на сервер
     editProfile(items) {
         return fetch(`${this._url}users/me`, {
             method: "PATCH",
@@ -45,6 +45,7 @@ export default class Api {
             }),
         }).then((res) => this._requestResult(res));
     }
+    // добавляем карточку на сервер
     addCard(items) {
         return fetch(`${this._url}cards`, {
             method: "POST",
@@ -59,7 +60,7 @@ export default class Api {
         })
             .then((res) => this._requestResult(res));
     }
-
+    // удаляем карточку с сервера
     deleteCard(items) {
         return fetch(`${this._url}cards/${items._id}`, {
             method: "DELETE",
@@ -69,9 +70,9 @@ export default class Api {
         })
             .then((res) => this._requestResult(res));
     }
-
+    //  ставим лайк карточке 
     addLike(items) {
-        return fetch(`${this._url}cards/${items._id}/likes`, {
+        return fetch(`${this._url}cards/${items}/likes`, {
             method: "PUT",
             headers: {
                 authorization: this._token,
@@ -79,9 +80,9 @@ export default class Api {
         })
             .then((res) => this._requestResult(res));
     }
-
+    //  удаляем лайк карточке 
     deleteLike(items) {
-        return fetch(`${this._url}cards/${items._id}/likes`, {
+        return fetch(`${this._url}cards/${items}/likes`, {
             method: "DELETE",
             headers: {
                 authorization: this._token,
@@ -89,7 +90,7 @@ export default class Api {
         })
             .then((res) => this._requestResult(res));
     }
-
+    // меняем  фото  профиля на сервере
     replaseAvatar(items) {
         return fetch(`${this._url}users/me/avatar`, {
             method: "PATCH",

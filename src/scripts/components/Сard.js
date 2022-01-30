@@ -1,5 +1,5 @@
 export class Card {
-    constructor(items, template, { handleCardClick }, { deleteCard }, { addLike }, { deleteLike }) {
+    constructor(items, template, { handleCardClick }, { deleteCard }, { addLike }, { deleteLike }, userId) {
         this._items = items;
         this._template = template;
         this._element = this._getTemplate();
@@ -8,10 +8,24 @@ export class Card {
         this._cardImage = this._element.querySelector('.card__image');
         this._cardNumberLike = this._element.querySelector('.card__heard-number');
         this._handleCardClick = handleCardClick;
-        this._userID = "5045c66c125b0882833b30e3";
+        this._userID = userId;
         this._deleteCard = deleteCard;
         this._addLike = addLike;
         this._deleteLike = deleteLike;
+    }
+    // получаем Id карточки
+    getId() {
+        return this._cardId = this._items._id;
+    }
+    // обновляем данные о лайках(ставим лайк)
+    setLike(res) {
+        this._cardNumberLike.textContent = res.likes.length;
+        this._cardNoLike.classList.add('card__heart_like');
+    }
+    // обновляем данные о лайках(удаляем лайк)
+    removeLike(res) {
+        this._cardNumberLike.textContent = res.likes.length;
+        this._cardNoLike.classList.remove('card__heart_like');
     }
 
     //  создание карточки
@@ -26,7 +40,6 @@ export class Card {
         else {
             this._cardDelete.classList.remove('card__delete_visible');
         }
-
         this._setEventListeners();
         return this._element;
     }
@@ -40,20 +53,10 @@ export class Card {
         // слушатель лайка карточек
         this._cardNoLike.addEventListener('click', () => {
             if (!this._cardNoLike.classList.contains('card__heart_like')) {
-                this._addLike(this._items)
-                    .then((res) => {
-                        this._cardNumberLike.textContent = res.likes.length;
-                        this._cardNoLike.classList.add('card__heart_like');
-                    })
-                    .catch((err) => console.log(err));
+                this._addLike(this.getId());
             }
             else {
-                this._deleteLike(this._items)
-                    .then((res) => {
-                        this._cardNumberLike.textContent = res.likes.length;
-                        this._cardNoLike.classList.remove('card__heart_like');
-                    })
-                    .catch((err) => console.log(err));
+                this._deleteLike(this.getId());
             }
         });
 
