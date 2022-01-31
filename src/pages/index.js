@@ -26,6 +26,9 @@ import {
 } from "../scripts/utils/constants.js";
 import "../pages/index.css"
 
+// переменная с идентификатором пользователя
+let userId;
+
 // валидируем попап редактирования профиля
 const formValidatorProfile = new FormValidator(formProfileEditing, validationConfig);
 formValidatorProfile.enableValidation();
@@ -43,7 +46,6 @@ const createCard = (items) => {
         deleteCard:
             (items, element) => {
                 popupConfirmDeletion.open(items, element);
-                popupConfirmDeletion.setEventListeners();
             }
     }, {
         addLike:
@@ -60,7 +62,7 @@ const createCard = (items) => {
                 .catch((err) => console.log(err));
 
         }
-    }, "5045c66c125b0882833b30e3");
+    }, userId);
     const cardElement = card.createCard(items);
     return cardElement;
 };
@@ -157,6 +159,7 @@ const popupConfirmDeletion = new PopupConfirmDeletion('#confirmDeletionCard', {
 
     },
 });
+popupConfirmDeletion.setEventListeners();
 
 // создаем попап замены изображения аватара
 const popupReplaseAvatar = new PopupWithForm('#addAvatar', {
@@ -195,6 +198,7 @@ buttonAvatar.addEventListener('click', () => {
 // запрашиваю данные о пользователе и карточки  от сервера
 Promise.all([api.getUserInfo(), api.getItemsGard()])
     .then(([userData, cards]) => {
+        userId = userData._id;
         userInfo.setUserInfo(userData);
         section.renderItems(cards.reverse());
     })

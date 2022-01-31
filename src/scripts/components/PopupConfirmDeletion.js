@@ -13,7 +13,6 @@ export default class PopupConfirmDeletion extends Popup {
     _formSubmit(evt) {
         evt.preventDefault();
         this._deleteCard(this._items, this._element);
-        this._form.removeEventListener('submit', this._formSubmit);
     }
 
     // слушатель событий

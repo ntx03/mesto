@@ -35,7 +35,6 @@ export default class PopupWithForm extends Popup {
             data[input.name] = input.value;
         });
         return data;
-
     }
 
 }
